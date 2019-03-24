@@ -1,4 +1,4 @@
-# Media Image Manager Plugin
+# OC Media Manager Extension Plugin
 
 This plugin extends the default October CMS backend media manager and allows end users to edit / manipulate images inside the October CMS media library interface. This is helpful when you have clients that need to resize large images, without having to use an external image editor.  The plugin extends the Media Library core files, but does not change them.
 
