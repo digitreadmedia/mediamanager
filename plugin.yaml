@@ -1,0 +1,6 @@
+plugin:
+    name: 'digitreadmedia.mediamanager::lang.plugin.name'
+    description: 'digitreadmedia.mediamanager::lang.plugin.description'
+    author: 'Digitread Media'
+    icon: oc-icon-image
+    homepage: 'http://www.digitread.co.za/oc-mediamanager'

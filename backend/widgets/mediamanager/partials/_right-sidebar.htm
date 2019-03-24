@@ -1,0 +1,30 @@
+<?= $this->makePartial('~/modules/backend/widgets/mediamanager/partials/_right-sidebar.htm') ?>
+<script type="text/template" id="editor-buttons">
+    <div id="image-editor">
+        <div class="image_editor">
+            <?php if (!$this->readOnly) : ?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group offset-right">
+                            <button id="resizebtn-side" class="btn btn-default" onclick="getForm('resize')">
+                                Resize
+                            </button>
+                            <button id="resizebtn-rotate" class="btn btn-default" onclick="getForm('rotate')">
+                                Rotate
+                            </button>                            
+                            <button id="resizebtn-flip" class="btn btn-default" onclick="getForm('flip')">
+                                Flip
+                            </button>
+                            <button id="resizebtn-crop" class="btn btn-default" onclick="getForm('crop')">
+                                &nbsp;&nbsp;Smart Crop&nbsp;&nbsp;
+                            </button>                            
+                            <button id="resizebtn-grey" class="btn btn-default" onclick="getForm('grayscale')">
+                                Grayscale
+                            </button>
+                        </div>
+                    </div>
+                </div>                 
+            <?php endif; ?> 
+        </div>
+    </div>
+</script>

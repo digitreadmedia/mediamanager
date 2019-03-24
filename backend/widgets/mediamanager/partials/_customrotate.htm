@@ -1,0 +1,36 @@
+<div class="control-popup modal fade" id="rotateForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
+                </div>
+                
+                <div class="modalForm">
+                    <div class="row">
+                        <div class="col-md-12"><h3>Rotate Settings</h3><hr/></div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col-md-3"><label>Angle:</label></div><div class="col-md-3"><input type="text" id = "angle" name="angle" value="" size="5" placeholder="-90/90"></div>
+                        <div class="col-md-3"><label>Background:</label></div><div class="col-md-3"><input type="color" id="bg" name="bg" value="" size="5" placeholder="default"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Overwrite?</label>&nbsp;<input type="checkbox" id="overwrite" name="overwite" value="1">&nbsp;&nbsp;
+                            <label>Keep Original?</label>&nbsp;<input type="checkbox" id="original" name="original" value="1" checked="checked">&nbsp;&nbsp;
+                            <label>Transparent?</label>&nbsp;<input type="checkbox" id="transparent" name="transparent" value="1">&nbsp;&nbsp; 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><small><strong>Please note:</strong><br/>Animated GIFs are not currently supported. Selecting 'transparent' will flatten the GIF and keep transparency.</small></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">&nbsp;</div><div class="col-md-3">&nbsp;</div>
+                        <div class="col-md-3">&nbsp;</div><div id="beforerotate" class="col-md-3"><button type="button" id="rotatebtn" data-request-loading="#loading" data-request="onCustomImage" onclick="return $(this).data('request-data', {checked: getRowAttributes($('tr.selected'),'#rotateForm')})" data-request-success="imageComplete();" class="btn btn-default"><i class="oc-icon-edit"></i>&nbsp;Rotate</button></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

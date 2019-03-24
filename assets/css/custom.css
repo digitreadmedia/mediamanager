@@ -1,0 +1,10 @@
+.toolbar-padded-custom {padding: 5px 20px 5px 20px; background: #cacaca;}
+div[data-control="media-manager"] .upload-progress {padding: 15px 20px 15px 20px !Important;}
+#resizeForm .modal-body {padding: 30px !Important;}
+#resizeForm .modalForm {padding-top:8px !Important;}
+#resizeForm .modalForm .row {padding-top:8px !Important; padding-bottom:8px !Important;}
+#resizeForm input, #resizeForm select {padding: 3px !Important;}
+#image-editor {display:table-row; width:100%; background: #ececec;}
+.image_editor {margin: 15px;}
+#popups .modalForm {padding-bottom: 15px !Important;}
+#popups .modalForm .row {padding-top: 5px !Important; padding-bottom: 5px !Important;}

@@ -1,0 +1,41 @@
+<div class="control-popup modal fade" id="resizeForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
+                </div>
+                
+                <div class="modalForm">
+                    <div class="row">
+                        <div class="col-md-12"><h3>Resizing Settings</h3><hr/></div>
+                    </div>                    
+                    <div class="row">
+                        <div class="col-md-3"><label>Image Width:</label></div><div class="col-md-3"><input type="text" id = "w" name="w" value="1600" size="5" placeholder="auto"> px</div>
+                        <div class="col-md-3"><label>Image Height:</label></div><div class="col-md-3"><input type="text" id="h" name="h" value="1200" size="5" placeholder="auto"> px</div>
+                    </div>
+                    <div class="row">                        
+                        <div class="col-md-3"><label>Resize By:</label></div><div class="col-md-3"><select id="constraint" name="constraint"><option value="width" selected>Width</option><option value="height">Height</option><option value="exact">Exact</option></select></div>
+                        <div class="col-md-3"><label>JPG Quality (%)</label></div><div class="col-md-3"><input type="text" size="5" id="quality" name="quality" value="" placeholder="100"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Overwrite?</label>&nbsp;<input type="checkbox" id="overwrite" name="overwite" value="1">&nbsp;&nbsp;
+                            <label>Keep Original?</label>&nbsp;<input type="checkbox" id="original" name="original" value="1" checked="checked">&nbsp;&nbsp;
+                            <label>Animated GIF?</label>&nbsp;<input type="checkbox" id="animated" onclick="validateChecked()" name="animated" value="1">&nbsp;&nbsp;   
+                            <label>Transparent?</label>&nbsp;<input type="checkbox" id="transparent" onclick="validateChecked()" name="transparent" value="1">&nbsp;&nbsp; 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><small><strong>Please note:</strong><br/>Transparent animated GIFs are not currently supported. Selecting 'transparent' will flatten the GIF and keep transparency.</small></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">&nbsp;</div><div class="col-md-3">&nbsp;</div>
+                        <div class="col-md-3">&nbsp;</div><div id="beforeload" class="col-md-3"><button type="button" id="submitbtn" data-request-loading="#loading" data-request="onCustomImage" onclick="return $(this).data('request-data', {checked: getRowAttributes($('tr.selected'),'#resizeForm')})" data-request-success="imageComplete();" class="btn btn-default"><i class="oc-icon-edit"></i>&nbsp;Resize</button></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
