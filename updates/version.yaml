@@ -1,2 +1,4 @@
 1.0.1:
-    - Initialize plugin. First version.
+    - 'Initialize plugin. First version.'
+1.0.2:
+    - 'Fixed Undefined index: REDIRECT_REDIRECT_SCRIPT_URI error'
