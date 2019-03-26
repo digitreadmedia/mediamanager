@@ -8,6 +8,7 @@ use Input;
 use Config;
 use Redirect;
 use ValidationException;
+use Backend;
 
 /**
  * Image Manipulation / Editing
@@ -45,9 +46,9 @@ class Plugin extends PluginBase
                 }
                 
                 //Set the media path
-                $base = $_SERVER['REDIRECT_REDIRECT_SCRIPT_URI'];
-                $path = str_replace('/index.php','',$_SERVER['SCRIPT_FILENAME']) . Config::get('cms.storage.media.path');
-                
+                $base = Backend::url('backend/media');
+                $path = base_path() . Config::get('cms.storage.media.path');
+
                 //Get the images & editing values
                 $checked = post('checked');
 
@@ -81,6 +82,7 @@ class Plugin extends PluginBase
                 if(($data['data-item-type'] == 'file')&&($data['data-document-type'] == 'image')) {
                     $image = $path . $data['data-path'];
                     $mime = mime_content_type($image);
+                    list($width, $height) = getimagesize($image);
                     $name = $data['data-title'];
                     $keeporiginal = filter_var($data['original'], FILTER_VALIDATE_BOOLEAN);
                     $overwrite = filter_var($data['overwrite'], FILTER_VALIDATE_BOOLEAN);
@@ -106,8 +108,10 @@ class Plugin extends PluginBase
                     }    
                     elseif(isset($data['process']) && $data['process'] == 'crop') {
                         $force = true;
-                        $width = preg_replace("/[^0-9.]/", "", $data['w']);
-                        $height = preg_replace("/[^0-9.]/", "", $data['h']);
+                        $w = preg_replace("/[^0-9.]/", "", $data['w']);
+                        $h = preg_replace("/[^0-9.]/", "", $data['h']);
+                        if($w > 0) {$width = $w;}
+                        if($h > 0) {$height = $h;}
                     } 
                     elseif(isset($data['process']) && $data['process'] == 'grayscale') {
                         $force = true;
