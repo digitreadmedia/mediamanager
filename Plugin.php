@@ -33,6 +33,9 @@ class Plugin extends PluginBase
     	  if(preg_match('/nimated GIFs are not supported at this time/',$e->getMessage())) {
     				return 'Animated GIFs are not supported at this time. Please refresh the page.';
     			}
+    	  if(preg_match('/accepts only numeric values/',$e->getMessage())) {
+    				return 'Please enter a numeric value.';
+    			}    			
         });
     
         \Backend\Widgets\MediaManager::extend(function ($widget) {
@@ -40,19 +43,19 @@ class Plugin extends PluginBase
             $widget->addJs('/plugins/digitreadmedia/mediamanager/assets/js/get_row_attributes.js');
             $widget->addCss('/plugins/digitreadmedia/mediamanager/assets/css/custom.css');
             $widget->addDynamicMethod('onCustomImage', function() use ($widget) {
-                
-                if(post('formaction') == 'loadform') {
-                    system('php artisan cache:clear');
-                    return true;
-                }
-                
+                               
                 //Set the media path
                 $base = Backend::url('backend/media');
                 $path = base_path() . Config::get('cms.storage.media.path');
 
                 //Get the images & editing values
                 $checked = post('checked');
-
+                
+                /*tracelog($checked);*/
+                if(!is_array($checked)) {
+                   throw new \Exception("The form contained no data."); 
+                }
+                
                 //Sanitize the posted values
                 $data = filter_var_array($checked,FILTER_SANITIZE_STRING); 
                 
@@ -78,12 +81,11 @@ class Plugin extends PluginBase
                 $mode = [];
 
 
-                //tracelog($data);
+                /*tracelog($data);*/
                 //Process the posted array
                 if(($data['data-item-type'] == 'file')&&($data['data-document-type'] == 'image')) {
                     $image = $path . $data['data-path'];
                     $mime = mime_content_type($image);
-                    list($width, $height) = getimagesize($image);
                     $name = $data['data-title'];
                     $keeporiginal = filter_var($data['original'], FILTER_VALIDATE_BOOLEAN);
                     $overwrite = filter_var($data['overwrite'], FILTER_VALIDATE_BOOLEAN);
@@ -116,8 +118,12 @@ class Plugin extends PluginBase
                     } 
                     elseif(isset($data['process']) && $data['process'] == 'grayscale') {
                         $force = true;
-                    }                    
-                     
+                    }                
+                    
+                    if((!$width)&&(!$height)) {
+                        list($width, $height) = getimagesize($image);
+                    }
+
                 }
 
                 try {
