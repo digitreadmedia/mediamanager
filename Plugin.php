@@ -2,6 +2,7 @@
 
 use System\Classes\PluginBase;
 use \DigitreadMedia\MediaManager\Classes\MediaImageManager;
+use System\Classes\MediaLibrary;
 use App;
 use Event;
 use Input;
@@ -144,7 +145,7 @@ class Plugin extends PluginBase
                     
                     $new_image = $action->onSave($name,$quality);
                     $newimg = str_replace($path,'',$new_image);
-                    system('php artisan cache:clear');
+                    MediaLibrary::instance()->resetCache();
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
