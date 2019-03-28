@@ -4,3 +4,5 @@
     - 'Fixed Undefined index: REDIRECT_REDIRECT_SCRIPT_URI error'
 1.0.3:
     - 'Updated the plugin to use the October CMS MediaLibrary refresh method instead of artisan'
+1.0.4:
+    - 'Patch for empty post array'
