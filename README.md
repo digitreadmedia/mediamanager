@@ -2,6 +2,8 @@
 
 This plugin extends the default October CMS backend media manager and allows end users to edit / manipulate images inside the October CMS media library interface. This is helpful when you have clients that need to resize large images, without having to use an external image editor.  The plugin extends the Media Library core files, but does not change them.
 
+**Install this plugin from the October CMS Marketplace:** https://octobercms.com/plugin/digitreadmedia-mediamanager
+
 ## Minimum Requirements
 - PHP >= 5.4 minimum, PHP >= 7 recommended
 - GD library >= 2.0
