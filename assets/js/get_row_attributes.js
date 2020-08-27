@@ -8,7 +8,7 @@
 
 jQuery(document).ready(function() {
     /**Add editor button to the preview screen**/
-    $("div[data-control=\"media-preview-container\"]").on('DOMSubtreeModified', ".sidebar-image-placeholder[data-control=\"sidebar-thumbnail\"]", function() {
+    $('body').on('DOMSubtreeModified', '.sidebar-image-placeholder[data-control="sidebar-thumbnail"]', function() {
         var template = $('#editor-buttons').html();
         var newDiv = $('#image-editor').length;
         if(newDiv < 1) {
